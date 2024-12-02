@@ -1,35 +1,114 @@
-# phase_3
+# 📖 Vue Article Page README  
 
-This template should help get you started developing with Vue 3 in Vite.
+This README provides a concise overview of a **Vue 3 component suite** built with 💡 **TypeScript** and 🎨 **SCSS**, focusing on content presentation and interactivity. These components include:  
 
-## Recommended IDE Setup
+- 🖊️ **Author Section** – Showcases the author’s details.  
+- 📚 **Main Content Section** – Displays the article body with dynamic features.  
+- 🔄 **Related Articles Carousel** – Dynamically fetches and displays related articles.  
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Let’s dive into the details! 🚀  
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## **📦 Components**  
 
-## Project Setup
+### 🖊️ **Author Section**  
+The **Author Section** is designed to display key information about the author, including their name, avatar, bio, and a button linking to their full profile.  
 
-```sh
-npm install
-```
+#### **Features:**  
+- **Avatar and Name:** Displays the author’s image and full name.  
+- **Bio Display:** A brief bio with truncation for long text.  
+- **Profile Button:** A clickable button to access the full profile.  
 
-### Compile and Hot-Reload for Development
+#### **Code Example:**  
+```vue  
+<template>  
+  <author-section />  
+</template>  
+```  
 
-```sh
-npm run dev
-```
+#### **Data Injection:**  
+This component relies on the following injected `author` object:  
+```typescript  
+{  
+  avatar: string; // URL of the author’s avatar  
+  full_name: string; // Full name of the author  
+  bio: string; // A short biography  
+}  
+```  
 
-### Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
+### 📚 **Main Content Section**  
+The **Main Content Section** renders the primary article body and tags, with support for dynamic headings. It provides a clean, user-friendly layout for reading content.  
 
-### Lint with [ESLint](https://eslint.org/)
+#### **Features:**  
+- **Dynamic Headings:** Automatically assigns IDs to `<h2>` elements in the article.  
+- **Interactive Tags:** Tags are rendered as clickable buttons.  
+- **Report Button:** Allows users to report content issues.  
 
-```sh
-npm run lint
-```
+#### **Props:**  
+- **`article` (Object):** Contains article data, including text and metadata.  
+- **`tags` (Array):** List of associated tags for the article.  
+
+#### **Code Example:**  
+```vue  
+<template>  
+  <main-content :article="articleData" :tags="tagsData" />  
+</template>  
+```  
+
+---
+
+### 🔄 **Related Articles Carousel**  
+The **Related Articles Carousel** is a dynamic and responsive component that displays related articles fetched from an API. It adjusts to different screen sizes, providing a smooth browsing experience.  
+
+#### **Features:**  
+- **Dynamic Slides:** Automatically adjusts the number of visible articles based on screen size.  
+- **Interactive Controls:** Includes next/previous buttons and clickable slide indicators.  
+- **API Integration:** Fetches related articles dynamically using Axios.  
+
+#### **API Requirements:**  
+- **Endpoint:** `/api/related`  
+- **Query Parameters:**  
+  ```json  
+  {  
+    "entity_type": "blog",  
+    "entity_slug": "example-slug",  
+    "domain": "blog,section,course,word",  
+    "take": 6  
+  }  
+  ```  
+
+#### **Code Example:**  
+```vue  
+<template>  
+  <related-articles />  
+</template>  
+```  
+
+---
+
+## **🚀 Quick Start**  
+
+### **1️⃣ Install Dependencies:**  
+```bash  
+npm install  
+```  
+
+### **2️⃣ Run Development Server:**  
+```bash  
+npm run dev  
+```  
+
+### **3️⃣ Build for Production:**  
+```bash  
+npm run build  
+```  
+
+---
+
+## **🎨 Customization**  
+
+- **Style Adjustments:** Modify `_colors.scss` and `_mixin.scss` for theme customization.  
+- **API Integration:** Update the API endpoint in `related-articles`.  
